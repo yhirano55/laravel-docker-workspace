@@ -5,14 +5,14 @@ services:
     image: mysql:5.7
     environment:
       TZ: 'Asia/Tokyo'
-      MYSQL_DATABASE: 'sample'
+      MYSQL_DATABASE: 'laravel'
       MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
     ports:
       - '3308:3306'
     volumes:
       - db-data:/var/lib/mysql
   app:
-    image: php:7.4-fpm
+    build: ./docker/php
     depends_on:
       - db
     volumes:
